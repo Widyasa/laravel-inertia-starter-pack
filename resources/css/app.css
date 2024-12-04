@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-sidebar-wrapper {
+        @apply flex items-center gap-2 text-primary font-medium px-5 py-3 w-full rounded duration-200 hover:text-white hover:bg-primary
+    }
+    .nav-sidebar-wrapper.active {
+        @apply bg-primary text-white
+    }
+    .nav-sidebar-wrapper.active svg path, .nav-sidebar-wrapper:hover svg path {
+        @apply stroke-white
+    }
+    .input-text {
+        @apply bg-[#F4F5FA] placeholder:font-light px-4 py-3 w-full rounded focus:outline-none text-sm
+    }
+    .btn {
+        @apply px-4 py-3 rounded duration-200 text-sm
+    }
+    .btn-primary {
+        @apply bg-primary text-white hover:brightness-110
+    }
+    tbody tr {
+        @apply even:bg-[#F4F5FA]
+    }
+    tbody tr td {
+        @apply py-2 first:rounded-l last:rounded-r
+    }
+    .btn-danger {
+        @apply bg-red-600 text-white hover:brightness-110
+    }
+    .input-auth{
+        @apply py-3 pl-10 pe-3 border border-[#757575] rounded w-full
+    }
+    .card-auth {
+        @apply w-[500px] rounded-xl py-5 px-6 bg-white
+    }
+    .sidebar {
+        @apply min-h-screen h-full bg-white transform transition-transform duration-300 -translate-x-full md:translate-x-0 md:block fixed lg:relative z-50 flex flex-col items-center py-[26px] px-[20px] w-[260px] border-r border-dark border-opacity-[0.12] overflow-y-auto;
+    }
+
+    .sidebar .sidebar-menu {
+        @apply mt-[26px] flex flex-col gap-[6px] self-start w-full;
+    }
+
+    .sidebar .sidebar-menu .menu-link {
+        @apply flex items-center gap-2 text-dark py-2 w-full rounded text-[0.913rem] relative;
+    }
+}
+
+
