@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DivisionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,5 +36,6 @@ Route::middleware(['auth'])->prefix('/dashboard')->group(function (){
     Route::get('/', function () {
         return Inertia::render( 'Dashboard/Dashboard');
     })->name('dashboard');
+    Route::resource('/division', DivisionController::class);
 });
 

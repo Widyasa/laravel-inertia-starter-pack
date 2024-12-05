@@ -4,7 +4,7 @@
 defineProps({
     navName : {require: true, type: String},
     navRoute:  {require:true, type:String},
-    active:  {require:true, type:Boolean}
+    active:  {require:true, type:Object}
 })
 </script>
 

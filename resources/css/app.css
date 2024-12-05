@@ -27,11 +27,20 @@
     tbody tr td {
         @apply py-2 first:rounded-l last:rounded-r
     }
+    thead {
+        @apply bg-primary text-white
+    }
     .btn-danger {
         @apply bg-red-600 text-white hover:brightness-110
     }
     .input-auth{
         @apply py-3 pl-10 pe-3 border border-[#757575] rounded w-full
+    }
+    .menu-link.active {
+        @apply bg-primary text-white
+    }
+    .menu-link{
+        @apply text-primary hover:bg-primary hover:text-white duration-200
     }
     .card-auth {
         @apply w-[500px] rounded-xl py-5 px-6 bg-white
@@ -45,7 +54,14 @@
     }
 
     .sidebar .sidebar-menu .menu-link {
-        @apply flex items-center gap-2 text-dark py-2 w-full rounded text-[0.913rem] relative;
+        @apply flex items-center gap-2 pl-4 py-2 w-full rounded text-[0.913rem] relative;
+    }
+    .dashboard-content {
+        @apply mx-[16px] md:mx-[42px];
+    }
+
+    .dashboard-content .content-card {
+        @apply bg-white py-[26px] px-[32px] rounded-md border border-dark border-opacity-[0.12];
     }
 }
 

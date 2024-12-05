@@ -18,6 +18,9 @@ const logout = () => {
             <SidebarNav :nav-route="route('dashboard')" nav-name="Dashboard" :active="{ 'active' : $page.url === '/dashboard'}">
                 <i class="fa-solid fa-house"></i>
             </SidebarNav>
+            <SidebarNav :nav-route="route('division.index')" nav-name="Division" :active="{ 'active' : $page.url === '/dashboard/division'}">
+                <i class="fa-solid fa-house"></i>
+            </SidebarNav>
 <!--            <sidebar-nav :nav-route="route('owner.service.index')" nav-name="Service" :active="{ 'active': $page.url.startsWith('/dashboard/owner/services') }">-->
 <!--                <i class="fa-solid fa-house"></i>-->
 <!--            </sidebar-nav>-->
