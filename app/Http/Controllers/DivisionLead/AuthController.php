@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Owner;
+namespace App\Http\Controllers\DivisionLead;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\AuthInterface;
@@ -19,16 +19,16 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        return Inertia::render('Auth/Owner/Login');
+        return Inertia::render('Auth/DivisionLead/Login');
     }
 
     public function login(LoginRequest $request)
     {
         try {
             $credentials = $request->validated();
-            if($this->authRepository->attemptLogin($credentials, 'owner')) {
+            if($this->authRepository->attemptLogin($credentials, 'division_lead')) {
                 $request->session()->regenerate();
-                return redirect()->route('owner.dashboard')->with('success', 'Login Success');
+                return redirect()->route('division_lead.dashboard')->with('success', 'Login Success');
             }
             throw new \Exception("Login Failed");
         } catch (\Exception $e) {
@@ -38,11 +38,11 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request)
-     {
-        $this->authRepository->logout('owner');
+    {
+        $this->authRepository->logout('division_lead');
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/owner/login')->with('success', 'Logout Success!');
+        return redirect('/lead/login')->with('success', 'Logout Success!');
     }
 
 }

@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
            OwnerSeeder::class,
-           DivisionSeeder::class
+           DivisionSeeder::class,
+            DivisionLeadSeeder::class,
+            MemberSeeder::class
         ]);
     }
 }

@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Owner\AuthController as OwnerAuthController;
+use App\Http\Controllers\DivisionLead\AuthController as DivisionLeadAuthController;
+use App\Http\Controllers\Member\AuthController as MemberAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +33,48 @@ Route::middleware('guest')->prefix('owner')->name('owner.')->group(function () {
     Route::post('login', [OwnerAuthController::class, 'login']);
     Route::post('logout', [OwnerAuthController::class, 'logout'])->name('logout');
 });
+Route::middleware('guest')->prefix('division_lead')->name('division_lead.')->group(function () {
+    Route::get('login', [DivisionLeadAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [DivisionLeadAuthController::class, 'login']);
+    Route::post('logout', [DivisionLeadAuthController::class, 'logout'])->name('logout');
+});
+Route::middleware('guest')->prefix('member')->name('member.')->group(function () {
+    Route::get('login', [MemberAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [MemberAuthController::class, 'login']);
+    Route::post('logout', [MemberAuthController::class, 'logout'])->name('logout');
+});
 
-Route::middleware(['auth'])->prefix('/dashboard')->group(function (){
+
+Route::middleware(["auth:division_lead"])->prefix('/division_lead/dashboard')->name('division_lead.')->group(function (){
     Route::get('/', function () {
         return Inertia::render( 'Dashboard/Dashboard');
     })->name('dashboard');
-    Route::resource('/division', DivisionController::class);
+
+    Route::get('/division', [DivisionController::class, 'index'])->name('division.index');
+    Route::get('/division/{division}', [DivisionController::class, 'show'])->name('division.show');
+    Route::post('/division', [DivisionController::class, 'store'])->name('division.store');
+    Route::put('/division/{division}', [DivisionController::class, 'update'])->name('division.update');
+    Route::delete('/division/{division}', [DivisionController::class, 'destroy'])->name('division.destroy');
 });
+
+Route::middleware(["auth:owner"])->prefix('/owner/dashboard')->name('owner.')->group(function (){
+    Route::get('/', function () {
+        return Inertia::render( 'Dashboard/Dashboard');
+    })->name('dashboard');
+
+    Route::get('/division', [DivisionController::class, 'index'])->name('division.index');
+    Route::get('/division/{division}', [DivisionController::class, 'show'])->name('division.show');
+    Route::post('/division', [DivisionController::class, 'store'])->name('division.store');
+    Route::put('/division/{division}', [DivisionController::class, 'update'])->name('division.update');
+    Route::delete('/division/{division}', [DivisionController::class, 'destroy'])->name('division.destroy');
+});
+
+Route::middleware(["auth:member"])->prefix('/member/dashboard')->name('member.')->group(function (){
+    Route::get('/', function () {
+        return Inertia::render( 'Dashboard/Dashboard');
+    })->name('dashboard');
+    Route::get('/division', [DivisionController::class, 'index'])->name('division.index');
+    Route::get('/division/{division}', [DivisionController::class, 'show'])->name('division.show');
+});
+
 

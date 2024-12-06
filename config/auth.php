@@ -38,20 +38,20 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'owners', 'division_leads', 'members',
+            'provider' => 'users'
         ],
-//        'owner' => [
-//            'driver' => 'session',
-//            'provider' => 'owners',
-//        ],
-//        'division_lead' => [
-//            'driver' => 'session',
-//            'provider' => 'division_leads',
-//        ],
-//        'member' => [
-//            'driver' => 'session',
-//            'provider' => 'members',
-//        ],
+        'owner' => [
+            'driver' => 'session',
+            'provider' => 'owners',
+        ],
+        'division_lead' => [
+            'driver' => 'session',
+            'provider' => 'division_leads',
+        ],
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'members',
+        ],
     ],
 
     /*
@@ -80,11 +80,11 @@ return [
                 'driver' => 'eloquent',
                 'model' => App\Models\Owner::class,
             ],
-            'division_lead' => [
+            'division_leads' => [
                 'driver' => 'eloquent',
                 'model' => App\Models\DivisionLead::class,
             ],
-            'member' => [
+            'members' => [
                 'driver' => 'eloquent',
                 'model' => App\Models\Member::class,
             ],
